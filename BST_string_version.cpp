@@ -2,6 +2,8 @@
 //  BST (Binary Search Tree)
 
 #include <iostream>
+#include <fstream>
+#include <windows.h>
 using namespace std;
 
 class tNode
@@ -56,20 +58,39 @@ tNode *search(string d, tNode *t){
 		search(d , t -> left);
 	}
 }
-void test(){
-	cout<<root->right->data;
+void printInOrder(tNode *t){
+	if(t!=NULL){
+		printInOrder(t->left);
+		cout<<endl<<t->data;
+		printInOrder(t->right);
+	}
 }
 
 };
 int main(){
+	system("color 8b");
 	BST b;
-	b.root=b.insert("C", b.root);
-    b.insert("S", b.root);
-    b.insert("B", b.root);
-//	b.insert("S", b.root);
-//	b.insert("S", b.root);
-//	b.insert("S", b.root);
-    b.test();
+	string line;
+	int i = 1;
+	ifstream myfile("dict.txt");
+	if(myfile.is_open()){
+		while(getline(myfile,line)){
+			if(i == 1){
+				b.root = b.insert(line,b.root);	
+			}else{
+				b.insert(line,b.root);
+			}
+			i++;
+		}
+		myfile.close();
+	}
+	else{
+		cout<<"not opened filr";
+	}
+	b.printInOrder(b.root);
+	
+
+  
 	return 0;
 	
 
