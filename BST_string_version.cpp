@@ -69,15 +69,15 @@ void printInOrder(tNode *t){
 void printPreOrder(tNode *t){
 	if(t!=NULL){
 		cout<<endl<<t->data;
-		printInOrder(t->left);
-		printInOrder(t->right);
+		printPreOrder(t->left);
+		printPreOrder(t->right);
 	}
 }	
 	
 void printPostOrder(tNode *t){
 	if(t!=NULL){
-		printInOrder(t->left);
-		printInOrder(t->right);
+		printPostOrder(t->left);
+		printPostOrder(t->right);
 		cout<<endl<<t->data;
 	}
 }	
