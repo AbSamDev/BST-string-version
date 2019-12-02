@@ -66,6 +66,22 @@ void printInOrder(tNode *t){
 	}
 }
 
+void printPreOrder(tNode *t){
+	if(t!=NULL){
+		cout<<endl<<t->data;
+		printInOrder(t->left);
+		printInOrder(t->right);
+	}
+}	
+	
+void printPostOrder(tNode *t){
+	if(t!=NULL){
+		printInOrder(t->left);
+		printInOrder(t->right);
+		cout<<endl<<t->data;
+	}
+}	
+
 };
 int main(){
 	system("color 8b");
